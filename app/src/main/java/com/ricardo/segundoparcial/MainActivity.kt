@@ -14,6 +14,8 @@ import com.ricardo.segundoparcial.IMC.Imc
 import com.ricardo.segundoparcial.IMC.ImcViewModel
 import com.ricardo.segundoparcial.examentercerparcial.AguaView
 import com.ricardo.segundoparcial.examentercerparcial.AguaViewModel
+import com.ricardo.segundoparcial.juego.RandomViewModel
+import com.ricardo.segundoparcial.juego.random
 import com.ricardo.segundoparcial.marcador.ExamenSegundoParcial
 import com.ricardo.segundoparcial.ui.theme.SegundoParcialTheme
 

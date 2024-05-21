@@ -42,6 +42,7 @@ fun AguaView(viewModel: AguaViewModel) {
         Text("Cuanta agua tomo", modifier = Modifier
             .background(Color.Blue)
             .fillMaxWidth(),
+            Color.White,
             textAlign = TextAlign.Center)
 
         Row (verticalAlignment = Alignment.CenterVertically,
@@ -53,7 +54,7 @@ fun AguaView(viewModel: AguaViewModel) {
                     .width(200.dp)
                     .clickable {
                         Log.d("Litro", "Agua Total")
-                        viewModel.litro(CantTotal (aguatotal))
+                        viewModel.incrementar(CantTotal (1.0))
                     })
             
             Text("Un Litro")
@@ -68,7 +69,7 @@ fun AguaView(viewModel: AguaViewModel) {
                     .width(200.dp)
                     .clickable {
                         Log.d("Medio litro", "Agua Total")
-                        viewModel.medio(CantTotal (aguatotal))
+                        viewModel.incrementar(CantTotal (.500))
                     })
 
             Text("500 ml")
@@ -83,7 +84,7 @@ fun AguaView(viewModel: AguaViewModel) {
                     .width(200.dp)
                     .clickable {
                         Log.d("Cuarto litro", "Agua Total")
-                        viewModel.cuarto(CantTotal (aguatotal))
+                        viewModel.incrementar(CantTotal (.250))
                     })
 
             Text("250 ml")
