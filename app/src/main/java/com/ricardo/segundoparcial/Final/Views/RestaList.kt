@@ -37,7 +37,7 @@ import com.ricardo.segundoparcial.ui.theme.SegundoParcialTheme
 
 
 @Composable
-fun RestaList(viewModel: RestaViewModel) {
+fun RestaList(viewModel: RestaViewModel, navController: NavHostController){
     val restaurantes by viewModel.restaurantes.collectAsState()
 
     Column(
@@ -58,7 +58,7 @@ fun RestaList(viewModel: RestaViewModel) {
                 Column(
                     modifier = Modifier
                         .clickable {
-                            //navController.navigate("myapp/$restaurantes")
+                            navController.navigate("myapp/$restaurantes")
                         }
                         .fillMaxWidth()
                 ) {
@@ -70,24 +70,22 @@ fun RestaList(viewModel: RestaViewModel) {
                             .fillMaxWidth()
                             .aspectRatio(16f / 9f)
                     )
-                    Row {
-                        Text(
-                            text = restaurantes.name,
+                    Row(modifier = Modifier
+                        .fillMaxWidth()) {
+                        Text(text = restaurantes.name,
                             fontWeight = FontWeight.Bold,
-                            fontSize = 21.sp
-                        )
+                            fontSize = 21.sp)
                         Box(
+                            text = "5",
+                            color = Color.Black,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 21.sp,
+                            textAlign = TextAlign.End,
                             modifier = Modifier
-                                .background(Color.Gray)
-                                .border(1.dp, Color.Black)
-                                .padding(8.dp)
-                        ) {
-                            Text(
-                                text = "4.5",
-                                color = Color.Gray,
-                                fontWeight = FontWeight.Bold
-                            )
-                        }
+                                .fillMaxWidth()
+                                .padding(bottom = 16.dp),
+                            textAlign = TextAlign.End
+                        )
                     }
                     Text(
                         text = "MX $0 Delivery Free 35-45 min",
@@ -104,23 +102,23 @@ fun RestaList(viewModel: RestaViewModel) {
     }
 }
 
-//@Composable
-//fun myapp(){
-//    val navController = rememberNavController()
-//    NavHost(navController = navController, startDestination = "List"){
-//        composable("List"){
-//            RestaList(viewModel = RestaViewModel(), navController)
-//        }
-//        composable("resta/{resta}"){backStackEntry ->
-//            RestaView(item = backStackEntry.arguments?.getString("item") ?: "")
-//        }
-//    }
-//}
+@Composable
+fun myapp(){
+    val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = "List"){
+        composable("List"){
+            RestaList(viewModel = RestaViewModel(), navController)
+        }
+        composable("resta/{resta}"){backStackEntry ->
+            RestaView(item = backStackEntry.arguments?.getString("item") ?: "")
+        }
+    }
+}
 
 @Preview(showBackground = true)
 @Composable
 fun RestaListPreview() {
     SegundoParcialTheme {
-        RestaList(viewModel = RestaViewModel())
+        RestaList(viewModel = RestaViewModel(), navController = rememberNavController())
     }
 }
