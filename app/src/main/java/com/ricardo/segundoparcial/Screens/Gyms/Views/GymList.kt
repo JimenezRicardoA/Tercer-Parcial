@@ -8,8 +8,10 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.tooling.preview.Preview
 import coil.compose.AsyncImage
 import com.ricardo.segundoparcial.Screens.Gyms.Viewmodel.GymViewModel
+import com.ricardo.segundoparcial.ui.theme.SegundoParcialTheme
 
 @Composable
 fun GymList(viewModel: GymViewModel) {
@@ -30,5 +32,13 @@ fun GymList(viewModel: GymViewModel) {
     DisposableEffect(Unit) {
         viewModel.getGyms()
         onDispose {}
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GymListPreview() {
+    SegundoParcialTheme {
+        GymList(viewModel = GymViewModel())
     }
 }

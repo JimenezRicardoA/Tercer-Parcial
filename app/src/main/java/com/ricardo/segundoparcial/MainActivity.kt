@@ -1,5 +1,6 @@
 package com.ricardo.segundoparcial
 
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -10,8 +11,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import com.ricardo.segundoparcial.Final.Viewmodel.RestaViewModel
+import com.ricardo.segundoparcial.Final.Views.RestaList
 import com.ricardo.segundoparcial.IMC.Imc
 import com.ricardo.segundoparcial.IMC.ImcViewModel
+import com.ricardo.segundoparcial.Screens.Gyms.Viewmodel.GymViewModel
+import com.ricardo.segundoparcial.Screens.Gyms.Views.GymList
 import com.ricardo.segundoparcial.examentercerparcial.AguaView
 import com.ricardo.segundoparcial.examentercerparcial.AguaViewModel
 import com.ricardo.segundoparcial.juego.RandomViewModel
@@ -29,7 +35,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AguaView(viewModel= AguaViewModel())
+                    RestaList(viewModel = RestaViewModel(), navController = rememberNavController())
                 }
             }
         }
