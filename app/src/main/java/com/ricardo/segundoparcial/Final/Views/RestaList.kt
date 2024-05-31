@@ -37,7 +37,7 @@ import com.ricardo.segundoparcial.ui.theme.SegundoParcialTheme
 
 
 @Composable
-fun RestaList(viewModel: RestaViewModel, navController: NavHostController) {
+fun RestaList(viewModel: RestaViewModel) {
     val restaurantes by viewModel.restaurantes.collectAsState()
 
     Column(
@@ -58,7 +58,7 @@ fun RestaList(viewModel: RestaViewModel, navController: NavHostController) {
                 Column(
                     modifier = Modifier
                         .clickable {
-                            navController.navigate("myapp/$restaurantes")
+                            //navController.navigate("myapp/$restaurantes")
                         }
                         .fillMaxWidth()
                 ) {
@@ -104,23 +104,23 @@ fun RestaList(viewModel: RestaViewModel, navController: NavHostController) {
     }
 }
 
-@Composable
-fun myapp(){
-    val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "List"){
-        composable("List"){
-            RestaList(viewModel = RestaViewModel(), navController)
-        }
-        composable("resta/{resta}"){backStackEntry ->
-            RestaView(item = backStackEntry.arguments?.getString("item") ?: "")
-        }
-    }
-}
+//@Composable
+//fun myapp(){
+//    val navController = rememberNavController()
+//    NavHost(navController = navController, startDestination = "List"){
+//        composable("List"){
+//            RestaList(viewModel = RestaViewModel(), navController)
+//        }
+//        composable("resta/{resta}"){backStackEntry ->
+//            RestaView(item = backStackEntry.arguments?.getString("item") ?: "")
+//        }
+//    }
+//}
 
 @Preview(showBackground = true)
 @Composable
 fun RestaListPreview() {
     SegundoParcialTheme {
-        RestaList(viewModel = RestaViewModel(), navController = rememberNavController())
+        RestaList(viewModel = RestaViewModel())
     }
 }

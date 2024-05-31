@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    RestaList(viewModel = RestaViewModel(), navController = rememberNavController())
+                    RestaList(viewModel = RestaViewModel())
                 }
             }
         }
