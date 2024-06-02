@@ -29,12 +29,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import coil.compose.AsyncImage
+import com.ricardo.segundoparcial.Final.Models.Resta
 import com.ricardo.segundoparcial.Final.Viewmodel.RestaViewModel
+import com.ricardo.segundoparcial.Final.Viewmodel.RsViewModel
 import com.ricardo.segundoparcial.ui.theme.SegundoParcialTheme
+import kotlinx.serialization.json.Json
+
 
 
 @Composable
@@ -106,12 +112,14 @@ fun RestaList(viewModel: RestaViewModel, navController: NavHostController){
 @Composable
 fun myapp(){
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "List"){
-        composable("List"){
+    NavHost(navController = navController, startDestination = "restas"){
+        composable("restas"){
             RestaList(viewModel = RestaViewModel(), navController)
         }
-        composable("resta/{resta}"){backStackEntry ->
-            RestaView(item = backStackEntry.arguments?.getString("item") ?: "")
+        composable("resta/{rest}", arguments = listOf(navArgument("rest") { type = NavType.StringType})){ backStackEntry ->
+            val json = backStackEntry.arguments?.getString("rest")
+            val rs = Json.decodeFromString<Resta>(json!!)
+            RestaView(rs, navController, viewModel = RsViewModel() )
         }
     }
 }
