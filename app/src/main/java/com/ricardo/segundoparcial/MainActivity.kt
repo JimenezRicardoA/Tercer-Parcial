@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.ricardo.segundoparcial.Final.Viewmodel.RestaViewModel
 import com.ricardo.segundoparcial.Final.Views.RestaList
+import com.ricardo.segundoparcial.Final.Views.myapp
 import com.ricardo.segundoparcial.IMC.Imc
 import com.ricardo.segundoparcial.IMC.ImcViewModel
 import com.ricardo.segundoparcial.Screens.Gyms.Viewmodel.GymViewModel
@@ -35,7 +36,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    RestaList(viewModel = RestaViewModel(), navController = rememberNavController())
+                    myapp()
                 }
             }
         }

@@ -3,6 +3,7 @@ package com.ricardo.segundoparcial.Final.Views
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -71,21 +72,21 @@ fun RestaList(viewModel: RestaViewModel, navController: NavHostController){
                             .aspectRatio(16f / 9f)
                     )
                     Row(modifier = Modifier
-                        .fillMaxWidth()) {
+                        .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween) {
                         Text(text = restaurantes.name,
                             fontWeight = FontWeight.Bold,
                             fontSize = 21.sp)
+
                         Box(
-                            text = "5",
-                            color = Color.Black,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 21.sp,
-                            textAlign = TextAlign.End,
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(bottom = 16.dp),
-                            textAlign = TextAlign.End
-                        )
+                                .background(Color(0xFFE4E6EF) )
+                                .padding(4.dp)
+                        ){
+                            Text(text = "4.5",
+                                color = Color(0xFF000000),
+                                fontSize = 16.sp)
+                        }
                     }
                     Text(
                         text = "MX $0 Delivery Free 35-45 min",
