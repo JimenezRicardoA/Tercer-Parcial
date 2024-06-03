@@ -87,7 +87,7 @@ fun RestaList(viewModel: RestaViewModel, navController: NavHostController){
                             tint = Color(0xFFDBE6E7),
                             modifier = Modifier
                                 .align(Alignment.TopEnd)
-                                .padding(8.dp)  // Agrega un poco de padding para no pegar el ícono al borde
+                                .padding(8.dp)
                         )
                     }
                     Row(modifier = Modifier
@@ -102,7 +102,7 @@ fun RestaList(viewModel: RestaViewModel, navController: NavHostController){
                                 .background(Color(0xFFE4E6EF))
                                 .padding(4.dp)
                         ){
-                            Text(text = "4.5",
+                            Text(text = "${resta.rating}",
                                 color = Color(0xFF000000),
                                 fontSize = 16.sp)
                         }

@@ -8,7 +8,6 @@ import androidx.navigation.compose.rememberNavController
 import com.ricardo.segundoparcial.Final.Viewmodel.RestaViewModel
 import com.ricardo.segundoparcial.Final.Views.RestaList
 import com.ricardo.segundoparcial.Final.Views.RestaView
-import com.ricardo.segundoparcial.Final.Views.prueba
 
 @Composable
 fun myapp(){

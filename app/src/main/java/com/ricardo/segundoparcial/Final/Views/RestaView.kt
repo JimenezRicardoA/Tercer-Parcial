@@ -22,6 +22,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.google.android.gms.maps.model.LatLng
+import com.google.maps.android.compose.GoogleMap
+import com.google.maps.android.compose.Marker
+import com.google.maps.android.compose.rememberCameraPositionState
 import com.ricardo.segundoparcial.Final.Viewmodel.RestaViewModel
 import com.ricardo.segundoparcial.R
 import java.net.URLDecoder
@@ -38,8 +42,7 @@ fun RestaView(resta: String, viewModel: RestaViewModel, navController: NavContro
     LazyColumn{
         items(restaurantes.filter { it.name == decodedName}) {
             restaurantes ->
-            Row (modifier = Modifier
-                .fillMaxWidth()){
+            Row (modifier = Modifier){
                 Row (verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.clickable(onClick = {
                         navController.popBackStack()
@@ -61,15 +64,25 @@ fun RestaView(resta: String, viewModel: RestaViewModel, navController: NavContro
                         textAlign = TextAlign.Start
                     )
                 }
-                Text(
-                    text = restaurantes.name,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 21.sp,
+                Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(bottom = 16.dp),
-                    textAlign = TextAlign.Center
-                )
+                        .weight(1f)  // This ensures the Box takes all available space
+                ){
+                    Column (
+                        modifier = Modifier.align(Alignment.Center)
+                    ) {
+                        Text(
+                            text = restaurantes.name,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 21.sp,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(bottom = 16.dp),
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                }
             }
 
             AsyncImage(
@@ -80,6 +93,23 @@ fun RestaView(resta: String, viewModel: RestaViewModel, navController: NavContro
                     .fillMaxWidth()
                     .aspectRatio(16f / 9f)
             )
+
+            val LatLng = LatLng(restaurantes.latitude.toDouble(), restaurantes.longitude.toDouble())
+            val cameraPositionState = rememberCameraPositionState{
+                position = com.google.android.gms.maps.model.CameraPosition.fromLatLngZoom(LatLng, 15f)
+            }
+            GoogleMap (
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .aspectRatio(16f / 9f),
+                cameraPositionState = cameraPositionState,
+            ){
+                Marker(
+                    state = com.google.maps.android.compose.MarkerState(position = LatLng),
+                    title = restaurantes.name,
+                    snippet = "Restaurant Location"
+                )
+            }
 
             Box(
                 modifier = Modifier

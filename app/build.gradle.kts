@@ -72,6 +72,8 @@ dependencies {
     implementation("io.coil-kt:coil-compose:2.4.0")
     implementation ("androidx.navigation:navigation-compose:2.5.3")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
-    implementation("com.google.android.gms:play-services-maps:18.1.0")
-    implementation ("com.google.maps.android:maps-compose:1.0.0")
+    implementation("com.google.android.gms:play-services-maps:18.0.2")
+    implementation ("com.google.maps.android:maps-compose:2.0.0")
+    implementation("com.google.accompanist:accompanist-permissions:0.28.0")
+    implementation("androidx.browser:browser:1.4.0")
 }
