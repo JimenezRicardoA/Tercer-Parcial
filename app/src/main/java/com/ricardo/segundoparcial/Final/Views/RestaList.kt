@@ -59,7 +59,8 @@ fun RestaList(viewModel: RestaViewModel, navController: NavHostController){
                 Column(
                     modifier = Modifier
                         .clickable {
-                            val encodedName = URLEncoder.encode(resta.name, StandardCharsets.UTF_8.toString())
+                            val encodedName =
+                                URLEncoder.encode(resta.name, StandardCharsets.UTF_8.toString())
                             navController.navigate("RestaView/$encodedName")
                         }
                         .fillMaxWidth()
@@ -81,7 +82,7 @@ fun RestaList(viewModel: RestaViewModel, navController: NavHostController){
 
                         Box(
                             modifier = Modifier
-                                .background(Color(0xFFE4E6EF) )
+                                .background(Color(0xFFE4E6EF))
                                 .padding(4.dp)
                         ){
                             Text(text = "4.5",
@@ -89,10 +90,17 @@ fun RestaList(viewModel: RestaViewModel, navController: NavHostController){
                                 fontSize = 16.sp)
                         }
                     }
-                    Text(
-                        text = "MX $0 Delivery Free 35-45 min",
-                        color = Color.Black
-                    )
+
+                    Row(modifier = Modifier
+                        .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween){
+                        Text(
+                            text = "MX ${resta.fee} Delivery ${resta.delivery}",
+                            color = Color.Black
+                        )
+                        Text(text = resta.schedule,
+                            color = Color.Black)
+                    }
                     Spacer(modifier = Modifier.height(16.dp))
                 }
             }
