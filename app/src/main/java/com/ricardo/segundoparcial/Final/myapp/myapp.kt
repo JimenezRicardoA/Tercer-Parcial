@@ -21,7 +21,7 @@ fun myapp(){
         composable("RestaView/{resta}"){ backStackEntry ->
             val resta = backStackEntry.arguments?.getString("resta")
             resta?.let {
-                prueba(resta = it, viewModel = RestaViewModel(), navController = navController)
+                RestaView(resta = it, viewModel = rsvm, navController = navController)
             }
         }
     }

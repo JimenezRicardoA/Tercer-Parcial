@@ -27,15 +27,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import com.ricardo.segundoparcial.Final.Viewmodel.RestaViewModel
 import com.ricardo.segundoparcial.ui.theme.SegundoParcialTheme
-
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 
 @Composable
@@ -60,7 +58,8 @@ fun RestaList(viewModel: RestaViewModel, navController: NavHostController){
                 Column(
                     modifier = Modifier
                         .clickable {
-                            navController.navigate("RestaView/$resta")
+                            val encodedName = URLEncoder.encode(resta.name, StandardCharsets.UTF_8.toString())
+                            navController.navigate("RestaView/$encodedName")
                         }
                         .fillMaxWidth()
                 ) {
