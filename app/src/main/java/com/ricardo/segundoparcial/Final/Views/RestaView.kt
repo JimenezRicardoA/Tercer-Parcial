@@ -42,7 +42,10 @@ fun RestaView(resta: String, viewModel: RestaViewModel, navController: NavContro
     LazyColumn{
         items(restaurantes.filter { it.name == decodedName}) {
             restaurantes ->
-            Row (modifier = Modifier){
+            Row (
+                modifier = Modifier
+                    .fillMaxWidth()
+            ){
                 Row (verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.clickable(onClick = {
                         navController.popBackStack()
@@ -64,25 +67,19 @@ fun RestaView(resta: String, viewModel: RestaViewModel, navController: NavContro
                         textAlign = TextAlign.Start
                     )
                 }
-                Box(
+                Spacer(modifier = Modifier.weight(1f))
+                Text(
+                    text = restaurantes.name,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 21.sp,
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(1f)  // This ensures the Box takes all available space
-                ){
-                    Column (
-                        modifier = Modifier.align(Alignment.Center)
-                    ) {
-                        Text(
-                            text = restaurantes.name,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 21.sp,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(bottom = 16.dp),
-                            textAlign = TextAlign.Center
-                        )
-                    }
-                }
+                        .padding(bottom = 16.dp),
+                    textAlign = TextAlign.Center,
+                    style = androidx.compose.ui.text.TextStyle(
+                        textAlign = TextAlign.Center
+                    )
+                )
+                Spacer(modifier = Modifier.weight(1f))
             }
 
             AsyncImage(
