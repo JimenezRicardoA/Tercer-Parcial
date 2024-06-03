@@ -12,8 +12,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -35,11 +38,15 @@ import com.ricardo.segundoparcial.Final.Viewmodel.RestaViewModel
 import com.ricardo.segundoparcial.ui.theme.SegundoParcialTheme
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
+import androidx.compose.material3.Icon
+import androidx.compose.ui.res.painterResource
+import com.ricardo.segundoparcial.R
 
 
 @Composable
 fun RestaList(viewModel: RestaViewModel, navController: NavHostController){
     val restaurantes by viewModel.restaurantes.collectAsState()
+    val LinkBlue = Color(0xFF0000EE)
 
     Column(
         modifier = Modifier.fillMaxSize()
@@ -65,14 +72,24 @@ fun RestaList(viewModel: RestaViewModel, navController: NavHostController){
                         }
                         .fillMaxWidth()
                 ) {
-                    AsyncImage(
-                        model = resta.imgName,
-                        contentDescription = "Imagen del restaurante",
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .aspectRatio(16f / 9f)
-                    )
+                    Box {
+                        AsyncImage(
+                            model = resta.imgName,
+                            contentDescription = "Imagen del restaurante",
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .aspectRatio(16f / 9f)
+                        )
+                        Icon(
+                            imageVector = Icons.Default.Favorite,
+                            contentDescription = "Favorito",
+                            tint = Color(0xFFDBE6E7),
+                            modifier = Modifier
+                                .align(Alignment.TopEnd)
+                                .padding(8.dp)  // Agrega un poco de padding para no pegar el ícono al borde
+                        )
+                    }
                     Row(modifier = Modifier
                         .fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween) {
@@ -94,10 +111,18 @@ fun RestaList(viewModel: RestaViewModel, navController: NavHostController){
                     Row(modifier = Modifier
                         .fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween){
-                        Text(
-                            text = "MX ${resta.fee} Delivery ${resta.delivery}",
-                            color = Color.Black
-                        )
+                        Row(verticalAlignment = Alignment.CenterVertically){
+                            Icon(
+                                painter = painterResource(id = R.drawable.license),
+                                contentDescription = "Icon Description",
+                                tint = Color(0xFFD3A13C),
+                                modifier = Modifier.size(24.dp)
+                            )
+                            Text(
+                                text = "MX ${resta.fee} Delivery ${resta.delivery}",
+                                color = Color.Black
+                            )
+                        }
                         Text(text = resta.schedule,
                             color = Color.Black)
                     }

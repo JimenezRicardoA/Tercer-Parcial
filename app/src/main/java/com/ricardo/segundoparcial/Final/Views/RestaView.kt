@@ -22,17 +22,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import com.google.android.gms.maps.model.CameraPosition
 import com.ricardo.segundoparcial.Final.Viewmodel.RestaViewModel
 import com.ricardo.segundoparcial.R
 import java.net.URLDecoder
 import java.nio.charset.StandardCharsets
-import com.google.android.gms.maps.model.LatLng
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
 
 
 @Composable
@@ -45,17 +38,29 @@ fun RestaView(resta: String, viewModel: RestaViewModel, navController: NavContro
     LazyColumn{
         items(restaurantes.filter { it.name == decodedName}) {
             restaurantes ->
-            Row {
-                Text(
-                    text = "<Back",
-                    color = LinkBlue,
-                    fontSize = 18.sp,
-                    modifier = Modifier
-                        .clickable {
-                            navController.popBackStack()
-                                   },
-                    textAlign = TextAlign.Start
-                )
+            Row (modifier = Modifier
+                .fillMaxWidth()){
+                Row (verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.clickable(onClick = {
+                        navController.popBackStack()
+                    })){
+                    Icon(
+                        painter = painterResource(id = R.drawable.back),
+                        contentDescription = "Back Icon",
+                        tint = LinkBlue,
+                        modifier = Modifier.size(18.dp)
+                    )
+                    Text(
+                        text = "Back",
+                        color = LinkBlue,
+                        fontSize = 18.sp,
+                        modifier = Modifier
+                            .clickable {
+                                navController.popBackStack()
+                            },
+                        textAlign = TextAlign.Start
+                    )
+                }
                 Text(
                     text = restaurantes.name,
                     fontWeight = FontWeight.Bold,
@@ -93,12 +98,13 @@ fun RestaView(resta: String, viewModel: RestaViewModel, navController: NavContro
                     Icon(
                         painter = painterResource(id = R.drawable.call),
                         contentDescription = "Phone Icon",
-                        tint = LinkBlue
+                        tint = LinkBlue,
+                        modifier = Modifier.size(20.dp)
                     )
                     Spacer(modifier = Modifier.width(5.dp))
                     Text(text = "Llamar",
                         color = LinkBlue,
-                        fontSize = 18.sp,
+                        fontSize = 20.sp,
                         textDecoration = TextDecoration.Underline)
                 }
             }
@@ -120,12 +126,13 @@ fun RestaView(resta: String, viewModel: RestaViewModel, navController: NavContro
                     Icon(
                         painter = painterResource(id = R.drawable.computer),
                         contentDescription = "Computer Icon",
-                        tint = LinkBlue
+                        tint = LinkBlue,
+                        modifier = Modifier.size(20.dp)
                     )
                     Spacer(modifier = Modifier.width(5.dp))
                     Text(text = "Sitio Web",
                         color = LinkBlue,
-                        fontSize = 18.sp,
+                        fontSize = 20.sp,
                         textDecoration = TextDecoration.Underline)
                 }
             }
