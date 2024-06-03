@@ -31,7 +31,6 @@ fun RestaView(resta: String, viewModel: RestaViewModel, navController: NavContro
         modifier = Modifier
             .fillMaxWidth()
     ){
-
         LazyColumn{
             items(restaurantes) {
                 restaurantes ->

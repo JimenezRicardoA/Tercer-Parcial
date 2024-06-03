@@ -56,16 +56,16 @@ fun RestaList(viewModel: RestaViewModel, navController: NavHostController){
         )
         LazyColumn {
             items(restaurantes) {
-                restaurantes ->
+                    resta ->
                 Column(
                     modifier = Modifier
                         .clickable {
-                            navController.navigate("myapp/$restaurantes")
+                            navController.navigate("RestaView/$resta")
                         }
                         .fillMaxWidth()
                 ) {
                     AsyncImage(
-                        model = restaurantes.imgName,
+                        model = resta.imgName,
                         contentDescription = "Imagen del restaurante",
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
@@ -75,7 +75,7 @@ fun RestaList(viewModel: RestaViewModel, navController: NavHostController){
                     Row(modifier = Modifier
                         .fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween) {
-                        Text(text = restaurantes.name,
+                        Text(text = resta.name,
                             fontWeight = FontWeight.Bold,
                             fontSize = 21.sp)
 
@@ -100,23 +100,6 @@ fun RestaList(viewModel: RestaViewModel, navController: NavHostController){
         DisposableEffect(Unit) {
             viewModel.getResta()
             onDispose { }
-        }
-    }
-}
-
-@Composable
-fun myapp(){
-    val navController = rememberNavController()
-    val rsvm : RestaViewModel = viewModel()
-    NavHost(navController = navController, startDestination = "RestaList"){
-        composable("RestaList"){
-            RestaList(viewModel = rsvm, navController = navController)
-        }
-        composable("resta/{resta}"){ backStackEntry ->
-            val resta = backStackEntry.arguments?.getString("resta")
-            resta?.let {
-                RestaView(resta = it, viewModel = RestaViewModel(), navController = navController)
-            }
         }
     }
 }
