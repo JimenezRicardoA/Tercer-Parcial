@@ -17,6 +17,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -39,6 +40,8 @@ import com.ricardo.segundoparcial.ui.theme.SegundoParcialTheme
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconToggleButton
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import com.ricardo.segundoparcial.R
 
@@ -46,7 +49,6 @@ import com.ricardo.segundoparcial.R
 @Composable
 fun RestaList(viewModel: RestaViewModel, navController: NavHostController){
     val restaurantes by viewModel.restaurantes.collectAsState()
-    val LinkBlue = Color(0xFF0000EE)
 
     Column(
         modifier = Modifier.fillMaxSize()
@@ -81,14 +83,27 @@ fun RestaList(viewModel: RestaViewModel, navController: NavHostController){
                                 .fillMaxWidth()
                                 .aspectRatio(16f / 9f)
                         )
-                        Icon(
-                            imageVector = Icons.Default.Favorite,
-                            contentDescription = "Favorito",
-                            tint = Color(0xFFDBE6E7),
-                            modifier = Modifier
-                                .align(Alignment.TopEnd)
-                                .padding(8.dp)
-                        )
+
+                        IconToggleButton(checked = resta.isFavorite,
+                            onCheckedChange ={
+                                resta.isFavorite
+                            }, modifier = Modifier
+                                .align(Alignment.TopEnd)  // Align the icon to the top end (top right)
+                                .padding(8.dp)){
+                            Icon(
+                                modifier = Modifier.graphicsLayer {
+                                    scaleX = 1.3f
+                                    scaleY = 1.3f
+                                },
+                                imageVector = if (resta.isFavorite){
+                                    Icons.Filled.Favorite
+                                } else {
+                                    Icons.Default.FavoriteBorder
+                                },
+                                contentDescription = null,
+                                tint = if (resta.isFavorite) Color.Red else Color.Gray
+                            )
+                        }
                     }
                     Row(modifier = Modifier
                         .fillMaxWidth(),
