@@ -12,11 +12,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import com.ricardo.segundoparcial.CookBook.MainScreen
 import com.ricardo.segundoparcial.Final.Viewmodel.RestaViewModel
 import com.ricardo.segundoparcial.Final.Views.RestaList
 import com.ricardo.segundoparcial.Final.myapp.myapp
 import com.ricardo.segundoparcial.IMC.Imc
 import com.ricardo.segundoparcial.IMC.ImcViewModel
+import com.ricardo.segundoparcial.IMC.ScreenPreview
 import com.ricardo.segundoparcial.Screens.Gyms.Viewmodel.GymViewModel
 import com.ricardo.segundoparcial.Screens.Gyms.Views.GymList
 import com.ricardo.segundoparcial.examentercerparcial.AguaView
@@ -36,7 +38,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    myapp()
+                    MainScreen()
                 }
             }
         }
