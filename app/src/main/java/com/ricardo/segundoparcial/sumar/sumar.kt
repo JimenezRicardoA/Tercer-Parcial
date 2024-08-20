@@ -7,10 +7,11 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.ricardo.segundoparcial.ui.theme.SegundoParcialTheme
 
 @Composable
-fun SumarView(viewModel: SumViewModel) {
+fun SumarView(viewModel: SumViewModel, navController: NavController) {
     var numero1 by remember { mutableStateOf("") }
     var numero2 by remember { mutableStateOf("") }
     var numero3 by remember { mutableStateOf("") }
@@ -64,10 +65,3 @@ fun SumarView(viewModel: SumViewModel) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun sumarviewPreview() {
-    SegundoParcialTheme {
-        SumarView(viewModel = SumViewModel())
-    }
-}

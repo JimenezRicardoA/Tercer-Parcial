@@ -24,11 +24,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.ricardo.segundoparcial.R
 import com.ricardo.segundoparcial.ui.theme.SegundoParcialTheme
 
 @Composable
-fun Marcador(viewModel: SoccerScoreViewModel){
+fun Marcador(viewModel: SoccerScoreViewModel, navController: NavController) {
     val localScoreResult by viewModel.getLocalScore().observeAsState(0)
     val visitScoreResult by viewModel.getVisitScore().observeAsState(0)
 
@@ -88,13 +89,5 @@ fun Marcador(viewModel: SoccerScoreViewModel){
             )
         }
 
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun MarcadorPreview() {
-    SegundoParcialTheme {
-        Marcador(viewModel = SoccerScoreViewModel())
     }
 }

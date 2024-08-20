@@ -15,10 +15,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.ricardo.segundoparcial.R
 
 @Composable
-fun random(viewModel: RandomViewModel){
+fun random(viewModel: RandomViewModel, navController: NavController){
     val resultRandomNumberByViewModel by viewModel.getResult().observeAsState(-1)
     val RandomImage = when(resultRandomNumberByViewModel){
         0 -> R.drawable.piedra
@@ -40,11 +41,3 @@ fun random(viewModel: RandomViewModel){
     }
 }
 
-
-
-
-@Preview
-@Composable
-fun GamePreview() {
-    random(RandomViewModel())
-}

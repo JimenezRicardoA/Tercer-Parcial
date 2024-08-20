@@ -76,4 +76,6 @@ dependencies {
     implementation ("com.google.maps.android:maps-compose:2.0.0")
     implementation("com.google.accompanist:accompanist-permissions:0.28.0")
     implementation("androidx.browser:browser:1.4.0")
+    val nav_version = "2.7.7"
+    implementation("androidx.navigation:navigation-compose:$nav_version")
 }

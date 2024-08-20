@@ -18,10 +18,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.navigation.NavController
 import com.ricardo.segundoparcial.R
 
 @Composable
-fun Imc(viewModel: ImcViewModel) {
+fun Imc(viewModel: ImcViewModel, navController: NavController) {
     var height by remember { mutableStateOf("") }
     var weight by remember { mutableStateOf("") }
 
@@ -41,10 +42,4 @@ fun Imc(viewModel: ImcViewModel) {
         Text(text = "El peso es de : ${resultImcByViewModel}")
         Text(text = "${resultPesoByViewModel}")
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun ScreenPreview() {
-    Imc(ImcViewModel())
 }

@@ -26,12 +26,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.ricardo.segundoparcial.R
 import com.ricardo.segundoparcial.ui.theme.SegundoParcialTheme
 
 
 @Composable
-fun AguaView(viewModel: AguaViewModel) {
+fun AguaView(viewModel: AguaViewModel, navController: NavController) {
 
     val aguatotal by viewModel.getResultado().observeAsState(0.0)
     val context = LocalContext.current
@@ -100,13 +101,5 @@ fun AguaView(viewModel: AguaViewModel) {
         }) {
             Text(text = "Restablecer")
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun AguaPreview() {
-    SegundoParcialTheme {
-        AguaView(viewModel= AguaViewModel())
     }
 }
