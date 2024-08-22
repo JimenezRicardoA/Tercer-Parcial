@@ -1,4 +1,4 @@
-package com.ricardo.segundoparcial.firstparcial
+package com.ricardo.segundoparcial.secondparcial
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
@@ -24,7 +24,7 @@ import com.ricardo.segundoparcial.navigation.Routes
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun FirstParcialView(navController: NavController) {
+fun SecondParcialView(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -40,7 +40,7 @@ fun FirstParcialView(navController: NavController) {
                 .padding(innerPadding)
             ) {
                 Text(
-                    text = "First Partial View",
+                    text = "Second Partial View",
                     fontSize = 50.sp,
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center

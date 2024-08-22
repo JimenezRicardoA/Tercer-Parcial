@@ -78,4 +78,5 @@ dependencies {
     implementation("androidx.browser:browser:1.4.0")
     val nav_version = "2.7.7"
     implementation("androidx.navigation:navigation-compose:$nav_version")
+    implementation("androidx.compose.material:material-icons-extended:1.6.8")
 }

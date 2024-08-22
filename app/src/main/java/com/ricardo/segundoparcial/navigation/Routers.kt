@@ -7,4 +7,6 @@ object Routes {
     var random = "random"
     var Marcador = "Marcador"
     var Sumar = "SumarView"
+    var SecondParcialView = "SecondParcialView"
+    var ThirdParcialView = "ThirdParcialView"
 }

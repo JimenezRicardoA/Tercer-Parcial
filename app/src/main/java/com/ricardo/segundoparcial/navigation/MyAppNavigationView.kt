@@ -13,8 +13,10 @@ import com.ricardo.segundoparcial.juego.RandomViewModel
 import com.ricardo.segundoparcial.juego.random
 import com.ricardo.segundoparcial.marcador.Marcador
 import com.ricardo.segundoparcial.marcador.SoccerScoreViewModel
+import com.ricardo.segundoparcial.secondparcial.SecondParcialView
 import com.ricardo.segundoparcial.sumar.SumViewModel
 import com.ricardo.segundoparcial.sumar.SumarView
+import com.ricardo.segundoparcial.thirdparcial.ThirdParcialView
 
 @Composable
 fun MyAppNavigationView() {
@@ -39,6 +41,12 @@ fun MyAppNavigationView() {
             }
             composable(Routes.Sumar) {
                 SumarView(viewModel = SumViewModel(), navController)
+            }
+            composable(Routes.SecondParcialView) {
+                SecondParcialView(navController)
+            }
+            composable(Routes.ThirdParcialView) {
+                ThirdParcialView(navController)
             }
 
 
