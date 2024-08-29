@@ -83,14 +83,28 @@ fun FirstParcialView(navController: NavController) {
                 Button(onClick = {
                     navController.navigate(Routes.SecondParcialView)
                 }) {
-                    Text(text = "Go to Suma",
+                    Text(text = "Go to SecondParcialView",
                         modifier = Modifier
                             .fillMaxWidth())
                 }
                 Button(onClick = {
                     navController.navigate(Routes.ThirdParcialView)
                 }) {
-                    Text(text = "Go to Suma",
+                    Text(text = "Go to ThirdParcialView",
+                        modifier = Modifier
+                            .fillMaxWidth())
+                }
+                Button(onClick = {
+                    navController.navigate(Routes.ClickGameView)
+                }) {
+                    Text(text = "Go to ClickGamme",
+                        modifier = Modifier
+                            .fillMaxWidth())
+                }
+                Button(onClick = {
+                    navController.navigate(Routes.LottieAnimationView)
+                }) {
+                    Text(text = "Go to LottieAnimationView",
                         modifier = Modifier
                             .fillMaxWidth())
                 }
