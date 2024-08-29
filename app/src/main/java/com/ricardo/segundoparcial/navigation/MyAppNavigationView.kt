@@ -6,11 +6,14 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.ricardo.segundoparcial.IMC.Imc
 import com.ricardo.segundoparcial.IMC.ImcViewModel
+import com.ricardo.segundoparcial.clickgame.ClickGameView
+import com.ricardo.segundoparcial.clickgame.clickgameViewModel
 import com.ricardo.segundoparcial.examentercerparcial.AguaView
 import com.ricardo.segundoparcial.examentercerparcial.AguaViewModel
 import com.ricardo.segundoparcial.firstparcial.FirstParcialView
 import com.ricardo.segundoparcial.juego.RandomViewModel
 import com.ricardo.segundoparcial.juego.random
+import com.ricardo.segundoparcial.lottie.LottieAnimationView
 import com.ricardo.segundoparcial.marcador.Marcador
 import com.ricardo.segundoparcial.marcador.SoccerScoreViewModel
 import com.ricardo.segundoparcial.secondparcial.SecondParcialView
@@ -47,6 +50,12 @@ fun MyAppNavigationView() {
             }
             composable(Routes.ThirdParcialView) {
                 ThirdParcialView(navController)
+            }
+            composable(Routes.ClickGameView) {
+                ClickGameView(viewModel = clickgameViewModel(), navController)
+            }
+            composable(Routes.LottieAnimationView) {
+                LottieAnimationView(navController)
             }
 
 

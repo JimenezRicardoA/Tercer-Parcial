@@ -9,4 +9,6 @@ object Routes {
     var Sumar = "SumarView"
     var SecondParcialView = "SecondParcialView"
     var ThirdParcialView = "ThirdParcialView"
+    var ClickGameView = "ClickGameView"
+    var LottieAnimationView = "LottieAnimationView"
 }
