@@ -29,5 +29,6 @@ fun AnimatedPreloader(modifier: Modifier = Modifier) {
         composition = preloaderLottieComposition,
         progress = preloaderProgress,
         modifier = modifier
+        
     )
 }
