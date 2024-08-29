@@ -1,5 +1,7 @@
 package com.ricardo.segundoparcial.navigation
 
+
+//lista de rutas de la aplicacion
 object Routes {
     var FirstParcialView = "FirstParcialView"
     var Imc = "imc"
