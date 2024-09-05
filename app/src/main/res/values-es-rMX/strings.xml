@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">segundoparcial</string>
+    <string name="tFirstParcial">Primer Parcial</string>
+    <string name="bFirstParcialView">Primer Parcial</string>
+    <string name="bIMC">Ve a IMC</string>
+    <string name="bAguaView">Ve a Vista de Agua</string>
+    <string name="bRandom">Ve a Piedra, papel o tijera</string>
+    <string name="bMarcador">Ve al Marcador</string>
+    <string name="bSuma">Ve a Suma</string>
+    <string name="bSecondPartial">Ve a Vista Segundo Parcial</string>
+    <string name="bthirdPartial">Ve a Vista Tercer Parcial</string>
+    <string name="bClickGame">Ve a el juego del Click</string>
+    <string name="bLottieAnimation">Ve a Vista Animacion de Lottie</string>
+    <string name="bspotify">Ve a Spotify</string>
+    <string name="bexamPrimPar">Ve a Examen Primer Parcial</string>
+    <string name="tExamenPrimerParcial">Examen Primer Parcial</string>
+</resources>

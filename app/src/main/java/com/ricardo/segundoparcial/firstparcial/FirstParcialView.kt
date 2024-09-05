@@ -14,10 +14,12 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.ricardo.segundoparcial.R
 import com.ricardo.segundoparcial.navigation.BottomNavBarView
 import com.ricardo.segundoparcial.navigation.Routes
 
@@ -28,9 +30,9 @@ fun FirstParcialView(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Valor", color = Color.White) },
+                title = { Text(stringResource(id = R.string.tFirstParcial), color = Color.White) },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = Color(0xFFDA00FF),
+                    containerColor = Color(0xFF55E4FB),
                 )
             )
         },
@@ -40,7 +42,7 @@ fun FirstParcialView(navController: NavController) {
                 .padding(innerPadding)
             ) {
                 Text(
-                    text = "First Partial View",
+                    text = (stringResource(id = R.string.bFirstParcialView)),
                     fontSize = 50.sp,
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center
@@ -48,63 +50,88 @@ fun FirstParcialView(navController: NavController) {
                 Button(onClick = {
                     navController.navigate(Routes.Imc)
                 }) {
-                    Text(text = "Go to Imc",
+                    Text(
+                        text = (stringResource(id = R.string.bIMC)),
                         modifier = Modifier
                             .fillMaxWidth())
                 }
                 Button(onClick = {
                     navController.navigate(Routes.AguaView)
                 }) {
-                    Text(text = "Go to AguaView",
+                    Text(
+                        text = (stringResource(id = R.string.bAguaView)),
                         modifier = Modifier
                             .fillMaxWidth())
                 }
                 Button(onClick = {
                     navController.navigate(Routes.random)
                 }) {
-                    Text(text = "Go to random",
+                    Text(
+                        text = (stringResource(id = R.string.bRandom)),
                         modifier = Modifier
                             .fillMaxWidth())
                 }
                 Button(onClick = {
                     navController.navigate(Routes.Marcador)
                 }) {
-                    Text(text = "Go to Marcador",
+                    Text(
+                        text = (stringResource(id = R.string.bMarcador)),
                         modifier = Modifier
                             .fillMaxWidth())
                 }
                 Button(onClick = {
                     navController.navigate(Routes.Sumar)
                 }) {
-                    Text(text = "Go to Suma",
+                    Text(
+                        text = (stringResource(id = R.string.bSuma)),
                         modifier = Modifier
                             .fillMaxWidth())
                 }
                 Button(onClick = {
                     navController.navigate(Routes.SecondParcialView)
                 }) {
-                    Text(text = "Go to SecondParcialView",
+                    Text(
+                        text = (stringResource(id = R.string.bSecondPartial)),
                         modifier = Modifier
                             .fillMaxWidth())
                 }
                 Button(onClick = {
                     navController.navigate(Routes.ThirdParcialView)
                 }) {
-                    Text(text = "Go to ThirdParcialView",
+                    Text(
+                        text = (stringResource(id = R.string.bthirdPartial)),
                         modifier = Modifier
                             .fillMaxWidth())
                 }
                 Button(onClick = {
                     navController.navigate(Routes.ClickGameView)
                 }) {
-                    Text(text = "Go to ClickGamme",
+                    Text(
+                        text = (stringResource(id = R.string.bClickGame)),
                         modifier = Modifier
                             .fillMaxWidth())
                 }
                 Button(onClick = {
                     navController.navigate(Routes.LottieAnimationView)
                 }) {
-                    Text(text = "Go to LottieAnimationView",
+                    Text(
+                        text = (stringResource(id = R.string.bLottieAnimation)),
+                        modifier = Modifier
+                            .fillMaxWidth())
+                }
+                Button(onClick = {
+                    navController.navigate(Routes.SpotifyView)
+                }) {
+                    Text(
+                        text = (stringResource(id = R.string.bspotify)),
+                        modifier = Modifier
+                            .fillMaxWidth())
+                }
+                Button(onClick = {
+                    navController.navigate(Routes.HuertoManzanasView)
+                }) {
+                    Text(
+                        text = (stringResource(id = R.string.bexamPrimPar)),
                         modifier = Modifier
                             .fillMaxWidth())
                 }

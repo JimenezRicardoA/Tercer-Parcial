@@ -1,3 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">SegundoParcial</string>
+    <string name="app_name">segundoparcial</string>
+    <string name="tFirstParcial">First Parcial</string>
+    <string name="bFirstParcialView">First Parcial</string>
+    <string name="bIMC">Go to BMI</string>
+    <string name="bAguaView">Go to Agua View</string>
+    <string name="bRandom">Go to Rock, Paper, Scissors</string>
+    <string name="bMarcador">Go to Score</string>
+    <string name="bSuma">Go to Plus</string>
+    <string name="bSecondPartial">Go to Second Partial View</string>
+    <string name="bthirdPartial">Go to third Partial View</string>
+    <string name="bClickGame">Go to ClickGame</string>
+    <string name="bLottieAnimation">Go to Lottie Animation View</string>
+    <string name="bspotify">Go to Spotify</string>
+    <string name="bexamPrimPar">Go to First Partial Exam</string>
+    <string name="tExamenPrimerParcial">First Partial Exam</string>
 </resources>

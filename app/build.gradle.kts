@@ -81,4 +81,5 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended:1.6.8")
     implementation("androidx.media:media:1.6.0")
     implementation("com.airbnb.android:lottie-compose:4.0.0")
+    implementation ("com.google.android.exoplayer:exoplayer:2.18.7")
 }

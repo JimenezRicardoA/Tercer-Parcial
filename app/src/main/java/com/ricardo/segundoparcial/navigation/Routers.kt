@@ -13,4 +13,6 @@ object Routes {
     var ThirdParcialView = "ThirdParcialView"
     var ClickGameView = "ClickGameView"
     var LottieAnimationView = "LottieAnimationView"
+    var SpotifyView = "SpotifyView"
+    var HuertoManzanasView = "HuertoManzanasView"
 }

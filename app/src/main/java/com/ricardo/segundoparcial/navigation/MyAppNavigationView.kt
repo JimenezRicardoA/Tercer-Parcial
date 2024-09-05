@@ -8,6 +8,8 @@ import com.ricardo.segundoparcial.IMC.Imc
 import com.ricardo.segundoparcial.IMC.ImcViewModel
 import com.ricardo.segundoparcial.clickgame.ClickGameView
 import com.ricardo.segundoparcial.clickgame.clickgameViewModel
+import com.ricardo.segundoparcial.examenprimerparcial.HuertoManzanasView
+import com.ricardo.segundoparcial.examenprimerparcial.HuertoManzanasViewModel
 import com.ricardo.segundoparcial.examentercerparcial.AguaView
 import com.ricardo.segundoparcial.examentercerparcial.AguaViewModel
 import com.ricardo.segundoparcial.firstparcial.FirstParcialView
@@ -17,6 +19,7 @@ import com.ricardo.segundoparcial.lottie.LottieAnimationView
 import com.ricardo.segundoparcial.marcador.Marcador
 import com.ricardo.segundoparcial.marcador.SoccerScoreViewModel
 import com.ricardo.segundoparcial.secondparcial.SecondParcialView
+import com.ricardo.segundoparcial.spotify.SpotifyView
 import com.ricardo.segundoparcial.sumar.SumViewModel
 import com.ricardo.segundoparcial.sumar.SumarView
 import com.ricardo.segundoparcial.thirdparcial.ThirdParcialView
@@ -56,6 +59,12 @@ fun MyAppNavigationView() {
             }
             composable(Routes.LottieAnimationView) {
                 LottieAnimationView(navController)
+            }
+            composable(Routes.SpotifyView) {
+                SpotifyView(navController)
+            }
+            composable(Routes.HuertoManzanasView) {
+                HuertoManzanasView(viewModel = HuertoManzanasViewModel(), navController)
             }
 
 
