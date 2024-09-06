@@ -49,15 +49,12 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
     var ptotal by remember { mutableStateOf("") }
     var pactual by remember { mutableStateOf("") }
 
-    val ProduccionTotal by viewModel.getTotal().observeAsState(0)
-    val ProduccionActual by viewModel.getActual().observeAsState(0)
-    val BackGround by viewModel.getBackgroundColor().observeAsState(Color.White)
+    val ProduccionActual by viewModel.getcantidadActual().observeAsState(0)
     val porcentaje by viewModel.getPorcentaje().observeAsState(0.0)
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(BackGround)
     ){
         TopAppBar(
             title = { Text(stringResource(id = R.string.tExamenPrimerParcial), color = Color.White) },
@@ -102,7 +99,9 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
                 ){
                     BasicTextField(
                         value = ptotal,
-                        onValueChange = {ptotal = it},
+                        onValueChange = {
+                            ptotal = it
+                                        },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         singleLine = true,
                         textStyle = TextStyle(fontSize = 25.sp, color = Color.Black),
@@ -208,7 +207,7 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center
                 ){
-                    Button(onClick = { viewModel.incremento(ManzanasHuertoModel(5)) },
+                    Button(onClick = { viewModel.incremento(5) },
                         modifier = Modifier
                             .align(Alignment.CenterVertically)
                             .size(80.dp, 80.dp)
@@ -223,7 +222,7 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
 
                     Spacer(modifier = Modifier.width(16.dp))
 
-                    Button(onClick = { viewModel.incremento(ManzanasHuertoModel(15))},
+                    Button(onClick = { viewModel.incremento(15)},
                         modifier = Modifier
                             .align(Alignment.CenterVertically)
                             .size(80.dp, 80.dp)
@@ -238,7 +237,7 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
 
                     Spacer(modifier = Modifier.width(16.dp))
 
-                    Button(onClick = { viewModel.incremento(ManzanasHuertoModel(30)) },
+                    Button(onClick = { viewModel.incremento(30) },
                         modifier = Modifier
                             .align(Alignment.CenterVertically)
                             .size(80.dp, 80.dp)
@@ -253,7 +252,7 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
 
                     Spacer(modifier = Modifier.width(16.dp))
 
-                    Button(onClick = { viewModel.incremento(ManzanasHuertoModel(50)) },
+                    Button(onClick = { viewModel.incremento(50) },
                         modifier = Modifier
                             .align(Alignment.CenterVertically)
                             .size(80.dp, 80.dp)
@@ -306,7 +305,7 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
 
             }
 
-            Button(onClick = { viewModel.porcentajes(porcentajes(pactual.toInt(), ptotal.toInt()))},
+            Button(onClick = { viewModel.porcentajes(ptotal.toInt())},
                 modifier = Modifier.align(Alignment.CenterHorizontally)
                     .offset(y = (60.dp)),
                 colors = ButtonDefaults.buttonColors(
