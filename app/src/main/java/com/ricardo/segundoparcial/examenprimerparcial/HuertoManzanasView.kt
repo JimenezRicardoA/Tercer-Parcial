@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
@@ -50,8 +51,14 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
 
     val ProduccionTotal by viewModel.getTotal().observeAsState(0)
     val ProduccionActual by viewModel.getActual().observeAsState(0)
+    val BackGround by viewModel.getBackgroundColor().observeAsState(Color.White)
+    val porcentaje by viewModel.getPorcentaje().observeAsState(0.0)
 
-    Box{
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(BackGround)
+    ){
         TopAppBar(
             title = { Text(stringResource(id = R.string.tExamenPrimerParcial), color = Color.White) },
             colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
@@ -64,14 +71,14 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
             contentDescription = "Descripción de la imagen",
             modifier = Modifier
                 .align(Alignment.TopCenter)
-                .offset(y = (30).dp)
+                .offset(y = (45).dp)
                 .size(300.dp)
         )
 
         Column(
             modifier = Modifier
                 .align(Alignment.Center)
-                .offset(y = (10).dp)
+                .offset(y = (60).dp)
         ){
             Row (
                 modifier = Modifier
@@ -191,7 +198,9 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
             Spacer(modifier = Modifier.height(35.dp))
 
             Box(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .offset(y = (-10.dp)),
                 contentAlignment = Alignment.Center
             ){
                 Row (
@@ -199,14 +208,14 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center
                 ){
-                    Button(onClick = { /*TODO*/ },
+                    Button(onClick = { viewModel.incremento(ManzanasHuertoModel(5)) },
                         modifier = Modifier
                             .align(Alignment.CenterVertically)
-                            .size(65.dp, 65.dp)
+                            .size(80.dp, 80.dp)
                             .padding(0.dp),
                         shape = RoundedCornerShape(5.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFF17AE03),
+                            containerColor = Color(0xFF55E4FB),
                             contentColor = Color.White
                         )) {
                         Text("+5", fontSize = 15.sp)
@@ -214,14 +223,14 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
 
                     Spacer(modifier = Modifier.width(16.dp))
 
-                    Button(onClick = { /*TODO*/ },
+                    Button(onClick = { viewModel.incremento(ManzanasHuertoModel(15))},
                         modifier = Modifier
                             .align(Alignment.CenterVertically)
-                            .size(65.dp, 65.dp)
+                            .size(80.dp, 80.dp)
                             .padding(0.dp),
                         shape = RoundedCornerShape(5.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFF17AE03),
+                            containerColor = Color(0xFF55E4FB),
                             contentColor = Color.White
                         )) {
                         Text("+15", fontSize = 15.sp)
@@ -229,14 +238,14 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
 
                     Spacer(modifier = Modifier.width(16.dp))
 
-                    Button(onClick = { /*TODO*/ },
+                    Button(onClick = { viewModel.incremento(ManzanasHuertoModel(30)) },
                         modifier = Modifier
                             .align(Alignment.CenterVertically)
-                            .size(65.dp, 65.dp)
+                            .size(80.dp, 80.dp)
                             .padding(0.dp),
                         shape = RoundedCornerShape(5.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFF17AE03),
+                            containerColor = Color(0xFF55E4FB),
                             contentColor = Color.White
                         )) {
                         Text("+30", fontSize = 15.sp)
@@ -244,19 +253,68 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
 
                     Spacer(modifier = Modifier.width(16.dp))
 
-                    Button(onClick = { /*TODO*/ },
+                    Button(onClick = { viewModel.incremento(ManzanasHuertoModel(50)) },
                         modifier = Modifier
                             .align(Alignment.CenterVertically)
                             .size(80.dp, 80.dp)
                             .padding(0.dp),
                         shape = RoundedCornerShape(5.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFF17AE03),
+                            containerColor = Color(0xFF55E4FB),
                             contentColor = Color.White
                         )) {
                         Text("+50", fontSize = 15.sp)
                     }
                 }
+            }
+
+            Row (
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .offset(y = (20.dp)),
+                verticalAlignment = Alignment.CenterVertically
+            ){
+                Text ("Porcentaje",
+                    color = Color.Black,
+                    style = TextStyle(fontSize = 17.sp),
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically)
+                        .offset(x = (30).dp)
+                )
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(0.6f)
+                        .offset(63.dp)
+                ){
+                    Text ("${porcentaje}",
+                        color = Color.Black,
+                        style = TextStyle(fontSize = 25.sp),
+                        modifier = Modifier
+                            .align(Alignment.Center)
+                            .offset(x = (-67).dp)
+                    )
+
+                    Spacer(
+                        modifier = Modifier
+                            .fillMaxWidth(1f)
+                            .height(1.dp)
+                            .background(Color.Black)
+                            .align(Alignment.BottomStart)
+                    )
+                }
+
+            }
+
+            Button(onClick = { viewModel.porcentajes(porcentajes(pactual.toInt(), ptotal.toInt()))},
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+                    .offset(y = (60.dp)),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF55E4FB),
+                    contentColor = Color.White
+                )
+                ){
+                Text("Calcular")
             }
 
         }
