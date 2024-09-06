@@ -1,6 +1,9 @@
 package com.ricardo.segundoparcial.examenprimerparcial
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -8,9 +11,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -28,10 +29,25 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.RectangleShape
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavController){
+    var ptotal by remember { mutableStateOf("") }
+    var pactual by remember { mutableStateOf("") }
+
     val ProduccionTotal by viewModel.getTotal().observeAsState(0)
     val ProduccionActual by viewModel.getActual().observeAsState(0)
 
@@ -53,32 +69,73 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
         )
 
         Column(
-            modifier = Modifier.align(Alignment.Center)
-                .offset(y = (-20).dp)
+            modifier = Modifier
+                .align(Alignment.Center)
+                .offset(y = (10).dp)
         ){
             Row (
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ){
                 Text ("Produccion Total",
                     color = Color.Black,
                     style = TextStyle(fontSize = 17.sp),
-                    modifier = Modifier.align(Alignment.CenterVertically)
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically)
                         .offset(x = (30).dp)
                 )
-                Text ("${ProduccionTotal}",
-                    color = Color.Black,
-                    style = TextStyle(fontSize = 25.sp),
-                    modifier = Modifier.align(Alignment.CenterVertically)
-                        .offset(x = (103).dp)
-                )
+
+                Spacer(modifier = Modifier.height(50.dp))
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(0.6f)
+                        .offset(70.dp)
+                ){
+                    BasicTextField(
+                        value = ptotal,
+                        onValueChange = {ptotal = it},
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                        singleLine = true,
+                        textStyle = TextStyle(fontSize = 25.sp, color = Color.Black),
+                        modifier = Modifier
+                            .offset(5.dp)
+                            .padding(start = 0.dp)
+                            .border(
+                                width = 1.dp,
+                                color = Color.White,
+                                shape = RectangleShape
+                            )
+                            .fillMaxWidth()
+                    )
+
+                    if (ptotal.isEmpty()) {
+                        Text(
+                            text = "0",
+                            style = TextStyle(fontSize = 25.sp, color = Color.Gray),
+                            modifier = Modifier
+                                .offset(5.dp)
+                                .padding(start = 0.dp)
+                                .align(Alignment.CenterStart)
+                        )
+                    }
+
+                    Spacer(
+                        modifier = Modifier
+                            .fillMaxWidth(0.5f)
+                            .height(1.dp)
+                            .background(Color.Black)
+                            .align(Alignment.BottomStart)
+                    )
+                }
 
                 Image(
                     painter = painterResource(id = R.drawable.manzana),
                     contentDescription = "Descripción de la imagen",
                     modifier = Modifier
                         .align(Alignment.CenterVertically)
-                        .offset(x = (170).dp)
+                        .offset(x = (25).dp)
                         .size(50.dp)
                 )
 
@@ -93,25 +150,113 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
                 Text ("Produccion Actual",
                     color = Color.Black,
                     style = TextStyle(fontSize = 17.sp),
-                    modifier = Modifier.align(Alignment.CenterVertically)
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically)
                         .offset(x = (30).dp)
                 )
-                Text ("${ProduccionActual}",
-                    color = Color.Black,
-                    style = TextStyle(fontSize = 25.sp),
-                    modifier = Modifier.align(Alignment.CenterVertically)
-                        .offset(x = (93).dp)
-                )
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(0.6f)
+                        .offset(63.dp)
+                ){
+                    Text ("${ProduccionActual}",
+                        color = Color.Black,
+                        style = TextStyle(fontSize = 25.sp),
+                        modifier = Modifier
+                            .align(Alignment.Center)
+                            .offset(x = (-67).dp)
+                    )
+
+                    Spacer(
+                        modifier = Modifier
+                            .fillMaxWidth(0.5f)
+                            .height(1.dp)
+                            .background(Color.Black)
+                            .align(Alignment.BottomStart)
+                    )
+                }
 
                 Image(
                     painter = painterResource(id = R.drawable.manzana),
                     contentDescription = "Descripción de la imagen",
                     modifier = Modifier
                         .align(Alignment.CenterVertically)
-                        .offset(x = (160).dp)
+                        .offset(x = (22).dp)
                         .size(50.dp)
                 )
 
+            }
+
+            Spacer(modifier = Modifier.height(35.dp))
+
+            Box(
+                modifier = Modifier.fillMaxWidth(),
+                contentAlignment = Alignment.Center
+            ){
+                Row (
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
+                ){
+                    Button(onClick = { /*TODO*/ },
+                        modifier = Modifier
+                            .align(Alignment.CenterVertically)
+                            .size(65.dp, 65.dp)
+                            .padding(0.dp),
+                        shape = RoundedCornerShape(5.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFF17AE03),
+                            contentColor = Color.White
+                        )) {
+                        Text("+5", fontSize = 15.sp)
+                    }
+
+                    Spacer(modifier = Modifier.width(16.dp))
+
+                    Button(onClick = { /*TODO*/ },
+                        modifier = Modifier
+                            .align(Alignment.CenterVertically)
+                            .size(65.dp, 65.dp)
+                            .padding(0.dp),
+                        shape = RoundedCornerShape(5.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFF17AE03),
+                            contentColor = Color.White
+                        )) {
+                        Text("+15", fontSize = 15.sp)
+                    }
+
+                    Spacer(modifier = Modifier.width(16.dp))
+
+                    Button(onClick = { /*TODO*/ },
+                        modifier = Modifier
+                            .align(Alignment.CenterVertically)
+                            .size(65.dp, 65.dp)
+                            .padding(0.dp),
+                        shape = RoundedCornerShape(5.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFF17AE03),
+                            contentColor = Color.White
+                        )) {
+                        Text("+30", fontSize = 15.sp)
+                    }
+
+                    Spacer(modifier = Modifier.width(16.dp))
+
+                    Button(onClick = { /*TODO*/ },
+                        modifier = Modifier
+                            .align(Alignment.CenterVertically)
+                            .size(80.dp, 80.dp)
+                            .padding(0.dp),
+                        shape = RoundedCornerShape(5.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFF17AE03),
+                            contentColor = Color.White
+                        )) {
+                        Text("+50", fontSize = 15.sp)
+                    }
+                }
             }
 
         }
