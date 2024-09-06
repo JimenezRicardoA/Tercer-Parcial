@@ -15,4 +15,9 @@
     <string name="bspotify">Go to Spotify</string>
     <string name="bexamPrimPar">Go to First Partial Exam</string>
     <string name="tExamenPrimerParcial">First Partial Exam</string>
+    <string name="totalproduction">Total Production</string>
+    <string name="currentproduction">Current Production</string>
+    <string name="percentege">Percentege</string>
+    <string name="calculate">Calculate</string>
+    <string name="total_units">Total: %1$d units</string>
 </resources>

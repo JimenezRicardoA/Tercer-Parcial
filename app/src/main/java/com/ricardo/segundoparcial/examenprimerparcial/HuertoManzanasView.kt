@@ -1,8 +1,11 @@
 package com.ricardo.segundoparcial.examenprimerparcial
 
+import android.annotation.SuppressLint
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -38,23 +41,40 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.platform.LocalContext
 
+@SuppressLint("StringFormatMatches")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavController){
     var ptotal by remember { mutableStateOf("") }
-    var pactual by remember { mutableStateOf("") }
+    var background by remember { mutableStateOf(Color.White) }
+    var linea by remember { mutableStateOf(Color.Black) }
 
     val ProduccionActual by viewModel.getcantidadActual().observeAsState(0)
     val porcentaje by viewModel.getPorcentaje().observeAsState(0.0)
+    val unidadesactuales = viewModel.unidadesactuales()
+    val context = LocalContext.current
+
+    LaunchedEffect(porcentaje) {
+        if (porcentaje >= 70) {
+            background = Color.Red
+            linea = Color.White
+        } else {
+            background = Color.White
+            linea = Color.Black
+        }
+    }
 
     Box(
         modifier = Modifier
             .fillMaxSize()
+            .background(background)
     ){
         TopAppBar(
             title = { Text(stringResource(id = R.string.tExamenPrimerParcial), color = Color.White) },
@@ -75,14 +95,14 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
         Column(
             modifier = Modifier
                 .align(Alignment.Center)
-                .offset(y = (60).dp)
+                .offset(y = (80).dp)
         ){
             Row (
                 modifier = Modifier
                     .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ){
-                Text ("Produccion Total",
+                Text (stringResource(id = R.string.totalproduction),
                     color = Color.Black,
                     style = TextStyle(fontSize = 17.sp),
                     modifier = Modifier
@@ -110,7 +130,7 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
                             .padding(start = 0.dp)
                             .border(
                                 width = 1.dp,
-                                color = Color.White,
+                                color = background,
                                 shape = RectangleShape
                             )
                             .fillMaxWidth()
@@ -131,7 +151,7 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
                         modifier = Modifier
                             .fillMaxWidth(0.5f)
                             .height(1.dp)
-                            .background(Color.Black)
+                            .background(linea)
                             .align(Alignment.BottomStart)
                     )
                 }
@@ -143,6 +163,15 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
                         .align(Alignment.CenterVertically)
                         .offset(x = (25).dp)
                         .size(50.dp)
+                        .clickable {
+                            Toast
+                                .makeText(
+                                    context,
+                                    context.getString(R.string.total_units, ptotal.toInt() * 80),
+                                    Toast.LENGTH_LONG
+                                )
+                                .show()
+                        }
                 )
 
             }
@@ -153,7 +182,7 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ){
-                Text ("Produccion Actual",
+                Text (stringResource(id = R.string.currentproduction),
                     color = Color.Black,
                     style = TextStyle(fontSize = 17.sp),
                     modifier = Modifier
@@ -178,7 +207,7 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
                         modifier = Modifier
                             .fillMaxWidth(0.5f)
                             .height(1.dp)
-                            .background(Color.Black)
+                            .background(linea)
                             .align(Alignment.BottomStart)
                     )
                 }
@@ -190,6 +219,15 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
                         .align(Alignment.CenterVertically)
                         .offset(x = (22).dp)
                         .size(50.dp)
+                        .clickable {
+                            Toast
+                                .makeText(
+                                    context,
+                                    context.getString(R.string.total_units, unidadesactuales),
+                                    Toast.LENGTH_SHORT
+                                )
+                                .show()
+                        }
                 )
 
             }
@@ -273,7 +311,7 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
                     .offset(y = (20.dp)),
                 verticalAlignment = Alignment.CenterVertically
             ){
-                Text ("Porcentaje",
+                Text (stringResource(id = R.string.percentege),
                     color = Color.Black,
                     style = TextStyle(fontSize = 17.sp),
                     modifier = Modifier
@@ -306,14 +344,16 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
             }
 
             Button(onClick = { viewModel.porcentajes(ptotal.toInt())},
-                modifier = Modifier.align(Alignment.CenterHorizontally)
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
                     .offset(y = (60.dp)),
+                shape = RoundedCornerShape(5.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF55E4FB),
                     contentColor = Color.White
                 )
                 ){
-                Text("Calcular")
+                Text(stringResource(id = R.string.calculate))
             }
 
         }

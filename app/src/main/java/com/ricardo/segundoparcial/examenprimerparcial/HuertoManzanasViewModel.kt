@@ -13,11 +13,18 @@ class HuertoManzanasViewModel : ViewModel(){
     private val porcentaje = MutableLiveData(0.0)
     fun getPorcentaje(): LiveData<Double> = porcentaje
 
+    private val unis = MutableLiveData(0)
+
     fun incremento (monto : Int){
         cantidadActual.postValue((cantidadActual.value?:0) + monto)
     }
 
     fun porcentajes(ptotal: Int){
         porcentaje.postValue(((cantidadActual.value?:0) * 100) / ptotal.toDouble())
+    }
+
+    fun unidadesactuales(): String{
+        val uni = (cantidadActual.value?:0) * 80
+        return uni.toString()
     }
 }
