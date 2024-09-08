@@ -1,6 +1,5 @@
 package com.ricardo.segundoparcial.examenprimerparcial
 
-import android.annotation.SuppressLint
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -48,7 +47,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
 
-@SuppressLint("StringFormatMatches")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavController){
@@ -193,7 +191,7 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
                 Box(
                     modifier = Modifier
                         .fillMaxWidth(0.6f)
-                        .offset(63.dp)
+                        .offset(53.dp)
                 ){
                     Text ("${ProduccionActual}",
                         color = Color.Black,
@@ -223,7 +221,7 @@ fun HuertoManzanasView(viewModel: HuertoManzanasViewModel, navController: NavCon
                             Toast
                                 .makeText(
                                     context,
-                                    context.getString(R.string.total_units, unidadesactuales),
+                                    "Total: $unidadesactuales unidades",
                                     Toast.LENGTH_SHORT
                                 )
                                 .show()
